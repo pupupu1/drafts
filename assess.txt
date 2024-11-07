@@ -7,3 +7,103 @@ In the next quarter, I will focus on enhancing the RDS tool by developing more c
 I will continue my work on the ML-DSP project, experimenting with transformer models and abstracting new features from input data. The goal is to find a balance between improving BER and reducing model complexity to simplify hardware implementation.
 
 Lastly, I will contribute to the JITRAP project by writing and running test cases, identifying bugs, and refining the tool to enhance its performance and usability.
+
+######Intro#######
+The Rapid Debug Simulation (RDS) tool is an ultra-fast simulation coverage and debugging solution designed specifically for digital simulations in SerDes PHY products. Built from extensive SerDes PHY customer support cases, RDS automates complex protocol timing parameter calculations and provides insightful diagnostic data without requiring manual intervention. Currently supporting the Ethernet 224G and USB4 protocols, RDS empowers engineers to quickly pinpoint and resolve issues, saving critical time in simulation analysis. With a flexible framework, RDS is designed for future expansion to support additional SerDes PHY protocols, making it a powerful tool for evolving simulation needs.
+
+
+#####Advantage######
+Speed and Efficiency: RDS performs protocol timing-parameter calculations and coverage analysis in seconds, drastically reducing the time engineers spend on complex, repetitive calculations that can take hours manually.
+
+Enhanced Accuracy: By automating calculations, RDS minimizes human errors, ensuring consistent and precise results that are essential for reliable protocol timing validation.
+
+Comprehensive Debug Insights: RDS provides detailed insights into specific failure points and timing issues, offering an overview that would typically require extensive, specialized knowledge to uncover manually.
+
+Standardized Workflow: Unlike human debugging, which can vary in approach and accuracy, RDS follows a standardized, repeatable workflow, ensuring consistent analysis across different teams and projects.
+
+Scalability and Extensibility: RDS’s framework is easily extensible, allowing it to adapt to new protocols and future requirements. This adaptability makes it a long-term asset for managing increasingly sophisticated protocols beyond current capabilities.
+
+#####Supported Features#########
+RDS provides a comprehensive suite of automated features tailored for USB4 and Ethernet 224G protocol debugging. Each feature addresses critical areas of digital simulation, enabling faster, more reliable analysis and pinpointing of issues. Below is a breakdown of supported features and their practical applications.
+
+1. Automated RC File Generation
+Description: Automatically generates RC files required for simulation setup, minimizing the manual configuration process.
+Possible Failure Symptoms: Incorrectly configured RC files can lead to simulation setup errors, misaligned timing, and incorrect protocol behavior.
+Use Case: RDS helps ensure RC files are consistently generated and free from human error, improving the accuracy of simulation setups.
+2. APB Signal Debug
+Description: Provides comprehensive debugging support for APB (Advanced Peripheral Bus) signals, essential for verifying data transfer and communication paths.
+Possible Failure Symptoms: Issues such as signal misalignment, incorrect data handshakes, or bus errors can arise if APB signals are improperly debugged.
+Customer Case: In a recent USB4 PHY simulation, APB signal misalignment caused data transfer failures. RDS was able to quickly identify the timing discrepancy, leading to a faster resolution.
+3. Specific Signal Debug
+Description: Allows users to debug a specific signal by entering its name in the command line, providing detailed information on the signal’s behavior.
+Possible Failure Symptoms: Misconfigured or unstable signals may lead to data corruption, signal loss, or unexpected simulation outcomes.
+Use Case: Engineers often use this feature to isolate and investigate individual signal behaviors, improving the granularity of the debug process.
+4. Handshake Information Analysis
+Description: Captures assert and deassert times for acknowledgment (ack) and request (req) signals across 4 lanes, and pstate tracking. For USB4, it also includes PMA (Physical Media Attachment) handshake details.
+Possible Failure Symptoms: Incorrect handshake timings can cause synchronization issues, data stalling, or protocol failures.
+Customer Case: In Ethernet 224G PHY cases, engineers faced data stalling due to a delayed ack signal. RDS identified the exact delay, enabling engineers to adjust timing parameters for seamless data flow.
+5. Datapath (TX/RX) Analysis – Data Rate, UI Calculation, and Latency Calculation
+Description: Provides TX/RX data rate tracking, unit interval (UI) calculation, and latency measurement. Currently, latency calculations are supported for USB4 only.
+Possible Failure Symptoms: Incorrect data rates or UI misalignment can lead to data loss, jitter issues, and communication breakdowns.
+Use Case: USB4 PHY simulations often rely on precise latency calculations. RDS automatically calculates these metrics, allowing engineers to quickly validate timing and ensure data integrity.
+6. Graphical User Interface (GUI)
+Description: A user-friendly GUI that consolidates debugging information, making RDS accessible even for engineers unfamiliar with command-line tools.
+Possible Failure Symptoms: Lack of visual feedback during debugging can lead to longer analysis times. The RDS GUI provides real-time updates and visual indicators of simulation states.
+Customer Feedback: Users report that the GUI drastically reduces debug times, especially for protocol handshakes and signal state monitoring, by providing an intuitive, centralized interface.
+
+
+######Supported Features V2########
+The RDS tool covers several feature categories that address critical areas of USB4 and Ethernet 224G debugging. Each category is further divided by feature type, specifying the exact parameters and protocols covered. This layout makes it easy to locate relevant debugging functionalities for different simulation needs.
+
+1. Handshake Analysis
+Overview: RDS captures and analyzes handshake signals across multiple lanes, including assert/deassert timings and state transitions, essential for protocol synchronization and reliability.
+
+Feature Type: PHY Initialization Handshake
+Supported Protocols: USB4, Ethernet 224G
+Signals Monitored: ack and req signals for 4 lanes, pstate tracking.
+USB4-Specific: Includes PMA (Physical Media Attachment) handshake.
+Possible Failure Symptoms: Data stalling, synchronization delays, and missed state transitions.
+Relevant Customer Case: A USB4 customer case showed a delay in the req signal; RDS pinpointed the exact assert/deassert mismatch, aiding swift correction.
+2. Datapath Analysis
+Overview: Tracks data rate, unit interval (UI), and latency in the TX/RX data paths, helping engineers validate transmission accuracy and timing alignment.
+
+Feature Type: TX/RX Data Rate Calculation
+Supported Protocols: USB4, Ethernet 224G
+Description: Calculates and verifies data rates across TX/RX paths to ensure protocol-compliant transmission speeds.
+Possible Failure Symptoms: Inconsistent data rates, data packet loss.
+Feature Type: UI (Unit Interval) Calculation
+Supported Protocols: USB4
+Description: Monitors UI accuracy, crucial for stable data flow and reduced jitter.
+Possible Failure Symptoms: UI drift leading to timing misalignment and jitter issues.
+Feature Type: Latency Calculation
+Supported Protocols: USB4 only
+Description: Measures TX/RX path latency to maintain timing integrity, especially important for USB4 simulations.
+Possible Failure Symptoms: Increased latency causing timing violations.
+Customer Feedback: USB4 customers report that latency tracking has been key in catching subtle delays during simulation.
+3. Signal Debugging
+Overview: Offers targeted debugging capabilities for APB and specific signals, providing detailed visibility into signal integrity and behavior.
+
+Feature Type: APB Signal Debug
+Supported Protocols: USB4, Ethernet 224G
+Description: Analyzes APB signals to ensure correct data transfer and communication flow.
+Possible Failure Symptoms: Bus communication errors, misaligned signals.
+Customer Case: An Ethernet 224G simulation revealed APB misalignment; RDS identified the issue’s source, helping engineers make quick corrections.
+Feature Type: Specific Signal Debugging by Name
+Supported Protocols: USB4, Ethernet 224G
+Description: Allows users to input a specific signal name in the command line for isolated debugging.
+Possible Failure Symptoms: Data corruption or unexpected signal behavior.
+4. Configuration Support
+Overview: Simplifies simulation setup and configuration through automated RC file generation.
+
+Feature Type: Automated RC File Generation
+Supported Protocols: USB4, Ethernet 224G
+Description: Automatically generates required RC files, ensuring accurate initial configuration.
+Possible Failure Symptoms: Misconfiguration errors during setup, simulation misalignment.
+5. User Interface
+Overview: A GUI provides a centralized interface for monitoring simulation states and viewing debug information, making RDS accessible and efficient for engineers.
+
+Feature Type: Graphical User Interface (GUI)
+Supported Protocols: USB4, Ethernet 224G
+Description: Presents real-time debug data and visual feedback, enhancing usability for non-command-line users.
+Customer Feedback: The GUI has been highly praised by users for reducing debug times and providing intuitive access to simulation insights.
+
