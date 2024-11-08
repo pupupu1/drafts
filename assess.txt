@@ -9,19 +9,33 @@ I will continue my work on the ML-DSP project, experimenting with transformer mo
 Lastly, I will contribute to the JITRAP project by writing and running test cases, identifying bugs, and refining the tool to enhance its performance and usability.
 
 ######Intro#######
-The Rapid Debug Simulation (RDS) tool is an ultra-fast simulation coverage and debugging solution designed specifically for digital simulations in SerDes PHY products. Built from extensive SerDes PHY customer support cases, RDS automates complex protocol timing parameter calculations and provides insightful diagnostic data without requiring manual intervention. Currently supporting the Ethernet 224G and USB4 protocols, RDS empowers engineers to quickly pinpoint and resolve issues, saving critical time in simulation analysis. With a flexible framework, RDS is designed for future expansion to support additional SerDes PHY protocols, making it a powerful tool for evolving simulation needs.
+The Rapid Debug Simulation (RDS) tool is a fast and efficient solution for debugging digital simulations in high-speed protocols. RDS is divided into two main parts: one for DDR/LPDDR debugging and another for SerDes PHY debugging. This page focuses only on the SerDes part.
+
+The SerDes component of RDS is designed to help engineers quickly spot and fix issues in SerDes PHY products. It automates calculations for important protocol timing parameters and provides useful diagnostic information. Developed with real customer cases and SerDes PHY databook insights, this part of RDS currently supports USB4 and Ethernet 224G protocols, with the flexibility to expand for more SerDes protocols in the future.
 
 
 #####Advantage######
-Speed and Efficiency: RDS performs protocol timing-parameter calculations and coverage analysis in seconds, drastically reducing the time engineers spend on complex, repetitive calculations that can take hours manually.
+Faster Response Time
+Analyzes the FSDB file directly, bypassing verbose mode and log file parsing, which accelerates issue detection and saves significant debug time.
 
-Enhanced Accuracy: By automating calculations, RDS minimizes human errors, ensuring consistent and precise results that are essential for reliable protocol timing validation.
+Less Human Effort
 
-Comprehensive Debug Insights: RDS provides detailed insights into specific failure points and timing issues, offering an overview that would typically require extensive, specialized knowledge to uncover manually.
+Automated Timing Calculations: Automatically checks complex protocol timing, freeing engineers from manual timing analysis and ensuring precision.
+Auto RC File Generation: Generates RC files for simulation setup without manual input, preventing setup errors and streamlining configuration.
+Automatic Debug Information Generation (future addition): Plans to include comprehensive automatic generation of all debug information, reducing the need for any manual intervention in the debugging process.
+High Accuracy
+Provides consistent, precise results through fully automated calculations, minimizing human errors common in manual debugging workflows.
 
-Standardized Workflow: Unlike human debugging, which can vary in approach and accuracy, RDS follows a standardized, repeatable workflow, ensuring consistent analysis across different teams and projects.
+Developed from Real Customer Cases
+Based on real customer issues and protocol databook insights, RDS targets actual challenges encountered in SerDes PHY debugging, making it highly relevant and effective.
 
-Scalability and Extensibility: RDS’s framework is easily extensible, allowing it to adapt to new protocols and future requirements. This adaptability makes it a long-term asset for managing increasingly sophisticated protocols beyond current capabilities.
+Efficient Workflow
+Features a streamlined GUI and automated reporting, consolidating all critical debug data in one place for easy, actionable insights.
+
+Scalability for Future Protocols
+Flexible framework designed to expand and support additional SerDes PHY protocols, making RDS a sustainable, long-term solution as protocols evolve.
+
+
 
 #####Supported Features#########
 RDS provides a comprehensive suite of automated features tailored for USB4 and Ethernet 224G protocol debugging. Each feature addresses critical areas of digital simulation, enabling faster, more reliable analysis and pinpointing of issues. Below is a breakdown of supported features and their practical applications.
